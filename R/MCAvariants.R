@@ -1,8 +1,8 @@
-MCAvariants <- function(Xtable, catype = "mca", printdims = 4, prop = 1, 
-     cex = 0.8, firstaxis = 1, lastaxis = 2) { 
-
+MCAvariants <- function(Xtable, catype = "mca",np = 5, vordered=c(TRUE,TRUE,TRUE,TRUE,TRUE)) { 
+#--------------------------------------------------------------------------------------------------------
+#the ordered variables should be indicated using the flag parameter vordered and should be close each other
+#-------------------------------------------------------------------------------------------------------
      X <- as.matrix(Xtable)
-
      if (dim(X)[2] > dim(X)[1]){
           X <- t(X) 
           rowlabels <- colnames(Xtable)
@@ -11,10 +11,9 @@ MCAvariants <- function(Xtable, catype = "mca", printdims = 4, prop = 1,
           rowlabels <- rownames(Xtable)
           collabels <- colnames(Xtable) 
      }
-
      idcv <- list()
      rows <- dim(X)[1]
-     np <- dim(X)[2]
+     #np <- dim(X)[2]
      nmod <- vector()
      comp <- vector()
      comppvalue1 <- vector()
@@ -29,10 +28,10 @@ MCAvariants <- function(Xtable, catype = "mca", printdims = 4, prop = 1,
      n <- sum(X)
      cols <- tmod
      xw <- rep(1,rows) #weight vector
-     maxaxes <- min(lastaxis, rows - 1, cols - 1)
+     maxaxes <- min(rows - 1, cols - 1)
      S <- switch(catype, "mca" = mcabasic(X, np = np, nmod = nmod, tmod 
           = tmod, rows = rows, idr = rowlabels, idc = collabels, idcv = 
-          idcv), "omca" = omcabasic(X))
+          idcv), "omca" = omcabasic(X,vordered=vordered))
 
      ####################################################################
      #                                                                  #
@@ -58,7 +57,7 @@ MCAvariants <- function(Xtable, catype = "mca", printdims = 4, prop = 1,
      #                                                                  #
      ####################################################################
 
-     if(catype == "omca"){
+     if((catype == "omca")||(catype == "OMCA")){
           Fmat <- S@Caxes %*%  S@RX
           Gmat <- S@Raxes %*% S@CX      # Variable coordinates
           Gmat <- Gmat[,-1]
@@ -112,16 +111,27 @@ MCAvariants <- function(Xtable, catype = "mca", printdims = 4, prop = 1,
      rownames(X) <- rowlabels
      colnames(X) <- collabels
      collabels2 <- dimnames(S@xo)[[2]]
-     mcacorporateris<- new("mcacorporaterisclass", br = S, DataMatrix = S@xo, 
-          rows = rows, cols = cols,  rowlabels = rowlabels, collabels = 
-          collabels2, Rprinccoord = round(Fmat, digits = 4), Cprinccoord 
-          = round(Gmat, digits = 4), inertiaXsum = inertiaXsum, 
-          inertiaBurtsum = inertiaBurtsum, inertias = inertias, 
-          inertiasAdjusted = inertiasAdjusted, catype = catype, printdims 
-          = printdims, maxaxes = maxaxes, comp = comp, componentpvalue1 = 
-          comppvalue1, degreef = degreef)
-     printmcacorporateris(mcacorporateris)
+#     mcacorporateris<- new("mcacorporaterisclass", br = S, Xtable = S@xo, 
+ #         rows = rows, cols = cols,  rowlabels = rowlabels, collabels = 
+  #        collabels2, Rprinccoord = round(Fmat, digits = 4), Cprinccoord 
+   #       = round(Gmat, digits = 4), inertiaXsum = inertiaXsum, 
+    #      inertiaBurtsum = inertiaBurtsum, inertias = inertias, 
+     #     inertiasAdjusted = inertiasAdjusted, catype = catype,  maxaxes = maxaxes, comp = comp, componentpvalue1 = 
+      #    comppvalue1, degreef = degreef)
+#-----------------------------------------------------------------------------------
 
-     plotmcacorporateris(mcacorporateris, prop = prop, catype = catype, cex = cex, 
-          firstaxis = firstaxis, lastaxis = lastaxis)
+list( Xtable = S@xo, BURT=S@BURT,listBpoly=S@listBpoly,LinearPercentage=S@LinearPercentage, 
+Rweights=S@Rweights, Cweights=S@Rweights,Raxes=S@Raxes,Caxes=S@Caxes,np=np,
+rows = rows, cols = cols, nmod=nmod,tmod=tmod, np=np,rowlabels = rowlabels, collabels = 
+          collabels2, Rprinccoord = Fmat, Cprinccoord 
+          = Gmat, inertiaXsum = inertiaXsum, 
+          inertiaBurtsum = inertiaBurtsum, inertias = inertias, 
+          inertiasAdjusted = inertiasAdjusted, catype = catype,  maxaxes = maxaxes, comp = comp, componentpvalue1 = 
+          comppvalue1, degreef = degreef)
+
+
+    # printmcacorporateris(mcacorporateris)
+
+#     plotmcacorporateris(mcacorporateris, prop = prop, catype = catype, cex = cex, 
+  #        firstaxis = firstaxis, lastaxis = lastaxis)
 }

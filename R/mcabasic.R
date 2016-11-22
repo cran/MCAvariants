@@ -71,22 +71,22 @@ mcabasic <- function(xo, np = 2, nmod = c(5, 5), tmod = 10, rows = 511,
      di2 <- diag(c((uni * 1)/sqrt(nr)))
      Burt <- t((1/np * xo)/sqrt(nr)) %*% (1/np * xo)/sqrt(nr)
      gdj <- solve(dj)
-     pcZN <- (xo/(np * sqrt(nr))) %*% gdj %*% t(xo/(np * sqrt(nr)))
+   idj2 <- solve(sqrt(dj))  
+   pcZN <- (xo/(np * sqrt(nr))) %*% gdj %*% t(xo/(np * sqrt(nr)))
      rispcZN <- eigen(pcZN)
      autovetn <- rispcZN$vectors
      valuesn <- rispcZN$values
-     pc1 <- ((1/np * xo)/sqrt(nr)) %*% solve(sqrt(dj))
-     pc2 <- solve(sqrt(dj)) %*% t((1/np * xo)/sqrt(nr))
-     pc0 <- solve(sqrt(dj)) %*% (Burt) %*% solve(sqrt(dj))
+     pc1 <- ((1/np * xo)/sqrt(nr)) %*% idj2
+     pc2 <- idj2 %*% t((1/np * xo)/sqrt(nr))
+     pc0 <- idj2 %*% (Burt) %*% solve(sqrt(dj))
      sing <- svd(pc1)$d
      rispc <- eigen(pc0)
-     autovet <- solve(sqrt(dj)) %*% rispc$vectors 
+     autovet <- idj2 %*% rispc$vectors 
      values <- rispc$values
      dimnames(pc2) <- list(idc2, NULL)
      dimnames(autovet) <- list(idc2, NULL)
-     idj2 <- solve(sqrt(dj))
-     mcabasic <- new("mcabasicresultsclass", RX = pc1, CX = pc2, Rweights = 
+       mcabasic <- new("mcabasicresults", RX = pc1, CX = pc2, Rweights = 
           uni1, Cweights = idj2, nmod = nmod, tmod = tmod, np = np, Raxes 
-          = autovet, Caxes = autovetn,  mu = sing, dj = dj, xo = xo, BURT  
+          = autovet, Caxes = autovetn,  mu = sing, dj = dj, xo = xo, listBpoly =list(), LinearPercentage= numeric(), BURT  
           = aBURT)
 }

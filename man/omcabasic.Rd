@@ -13,12 +13,16 @@ compute polynomial axes, coordinates, weights of rows and columns and
 total inertia.
 }
 \usage{
-omcabasic(xo)
+omcabasic(xo, vordered= c(FALSE, FALSE, TRUE, TRUE, TRUE))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{xo}{
 The starting table of variables in reduced code.
+}
+\item{vordered}{
+The flag parameter for specifying what variable  is ordered. 
+By default,  all the five variables are ordered: \code{vordered = c(FALSE,FALSE,TRUE,TRUE,TRUE)}. 
 }
 }
 %\details{

@@ -1,13 +1,10 @@
 mcafun <- function(XO, Burt, np, idr, idc, nmod){
-   
      cost <- XO[[1]]
      tot <- sum(XO[[1]])
-
      for(i in 2:np) {
           xo <- cbind(cost, XO[[i]])
           cost <- xo
      }
-
      nr <- nrow(xo)
      nc <- ncol(xo)
      uni <- matrix(1, nr, 1)
@@ -20,13 +17,11 @@ mcafun <- function(XO, Burt, np, idr, idc, nmod){
      di <- diag(c((uni * 1)/nr))
      Burt <- t((1/np * xo)/sqrt(nr)) %*% (1/np * xo)/sqrt(nr)
      gdj <- solve(dj)
-
      ####################################################################
      #                                                                  # 
      # Using indicator matrices                                         #
      #                                                                  # 
      ####################################################################
-
      pcZN <- (xo/(np * sqrt(nr))) %*% gdj %*% t(xo/(np * sqrt(nr)))
      rispcZN <- eigen(pcZN)#
      autovetn <- rispcZN$vectors
@@ -47,7 +42,7 @@ mcafun <- function(XO, Burt, np, idr, idc, nmod){
      list(xo = xo, xc = xc, autovet = autovet, autovetn = autovetn, 
           values = sing, valuesn = valuesn, pc1 = pc1, pc0 = pc0, pc2 = 
           pc2, dj = dj, totin = totin, tot = tot, sing = sing, nr = nr, 
-          Burt = Burt, Raxes = autovet, Caxes = autovetn[,-1], mu = 
-          sing[-1], valuesn = valuesn, R = pc1, C = pc2, Rweights = uni1, 
+          Burt = Burt, Raxes = autovet, Caxes = autovetn[,-1], 
+ valuesn = valuesn, R = pc1, C = pc2, Rweights = uni1, 
           Cweights = uni2)
 }

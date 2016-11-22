@@ -7,26 +7,31 @@ Classic and Ordered Multiple Correspondence Analysis
 \description{
 It performs Classic Multiple Correspondence analysis for nominal variables
 (setting \code{catype}="mca") and Ordered Multiple Correspondence analysis via orthogonal polynomials (setting \code{catype}="omca").
+When the categorical variables are nominal and ordinal, you can specify writing \code{FALSE} or \code{TRUE} in the input parameter \code{vordered}. 
 }
-\details{
-\tabular{ll}{
-Package: \tab MCAvariants\cr
-Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2014-06-27\cr
-%License: \tab What license is it under?\cr
+\usage{
+MCAvariants(Xtable, catype = "mca", np = 5, vordered = c(TRUE,TRUE,TRUE,TRUE,TRUE)) 
 }
+\arguments{
+\item{Xtable}{
+The two-way contingency table.
 }
-\author{
-Rosaria Lombardo
-Maintainer: Rosaria Lombardo <rosaria.lombardo@unina2.it>
+\item{catype}{
+The input parameter for specifying what variant of multiple correspondence analysis is considered.  By default,  \code{catype = "mca"}. 
+}
+\item{np}{The input parameter for specifying the number of categorical variables. By default, \code{np = 5}.
+}
+\item{vordered}{
+The flag parameter for specifying what variable  is ordered, the ordered variables should be in column close each other.
+By default,  all the five variables  are ordered: \code{vordered = c(FALSE,FALSE,TRUE,TRUE,TRUE)}. 
+}
 }
 %\details{
-%  ~~ This function belongs to the object class called "cacorporateplus"  ~~
+%This function belongs to the object class called \code{mcacorporateplus}  
 %}
 \value{
 Description of the output returned
-\item{DataMatrix }{The starting table of variables in reduced (primitive) code.}
+\item{Xtable}{The starting table of variables in reduced (primitive) code.}
 \item{rows }{The row number of the starting table.}
 \item{cols }{The column number of the starting table (coincident with the variable number).}
 \item{rowlabels }{The label of the row individuals.}
@@ -44,97 +49,21 @@ of polynomial components.}
 \item{componentpvalue1}{The p-value of the polynomial components of total inertia, when \code{catype} is \dQuote{omca}.}
 \item{degreef}{The degree of freedom of polynomial components of total inertia when, \code{catype} is \dQuote{omca}.}
 }
-
 \references{
 Lombardo R and Meulman JJ (2010) Journal of Classification, 27, 191-210. \cr
 Beh EJ Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. Wiley
 }
-
-%\seealso{
-%~~ Optional links to other man pages, e.g. ~~
-%~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-%}
+\author{
+Rosaria Lombardo and Eric J Beh
+}
+\note{
+This function recalls internally two other functions, depending on the setting of the input parameter \code{catype}, it recalls
+multiple correspondence analysis or ordered multiple correspondence analysis.
+It gives the output object necessary for printing and plotting the results. These two
+important functions are \code{print.MCAvariants} and \code{plot.MCAvariants}. 
+}
 \examples{
-satisfaction<-structure(c(5 , 3 , 4 , 4 , 4 , 5 , 4 , 3 , 5 , 4 , 
-3 , 3 , 4 , 4 , 4 , 3 , 3 , 1 , 4 , 3 , 3 , 2 , 3 , 4 , 2 , 3 , 
-3 , 4 , 4 , 2 , 4 , 3 , 3 , 3 , 4 , 3 , 2 , 3 , 3 , 5 , 5 , 5 , 
-4 , 2 , 4 , 5 , 3 , 3 , 4 , 3 , 4 , 2 , 3 , 4 , 4 , 5 , 1 , 3 , 
-4 , 4 , 5 , 4 , 5 , 3 , 4 , 3 , 5 , 4 , 3 , 2 , 4 , 3 , 3 , 3 , 
-3 , 3 , 4 , 3 , 4 , 4 , 2 , 3 , 4 , 3 , 4 , 4 , 4 , 5 , 3 , 3 , 
-2 , 5 , 3 , 3 , 4 , 5 , 2 , 3 , 3 , 1 , 4 , 4 , 1 , 4 , 5 , 3 , 
-3 , 3 , 2 , 4 , 1 , 1 , 1 , 4 , 4 , 4 , 4 , 1 , 3 , 5 , 1 , 3 , 
-3 , 3 , 5 , 2 , 2 , 5 , 3 , 4 , 5 , 3 , 4 , 3 , 4 , 4 , 4 , 5 , 
-3 , 5 , 4 , 3 , 4 , 3 , 4 , 5 , 3 , 5 , 4 , 4 , 3 , 3 , 4 , 5 , 
-3 , 3 , 2 , 3 , 3 , 3 , 4 , 4 , 3 , 2 , 5 , 3 , 3 , 3 , 3 , 3 , 
-2 , 2 , 3 , 5 , 5 , 3 , 3 , 3 , 3 , 4 , 2 , 2 , 3 , 1 , 4 , 4 , 
-3 , 5 , 3 , 3 , 4 , 4 , 3 , 3 , 3 , 4 , 5 , 3 , 3 , 3 , 3 , 4 , 
-5 , 5 , 3 , 4 , 2 , 3 , 4 , 3 , 3 , 4 , 2 , 1 , 3 , 4 , 3 , 3 , 
-3 , 2 , 3 , 3 , 4 , 4 , 3 , 3 , 3 , 3 , 3 , 4 , 4 , 3 , 4 , 5 , 
-4 ,5 , 3 , 5 , 5 , 3 , 5 , 4 , 4 , 3 , 3 , 4 , 3 , 
-4 , 3 , 4 , 3 , 4 , 2 , 3 , 5 , 2 , 2 , 2 , 3 , 4 , 2 , 5 , 4 , 
-4 , 1 , 4 , 3 , 4 , 2 , 4 , 4 , 2 , 3 , 4 , 5 , 5 , 5 , 5 , 3 , 
-3 , 4 , 3 , 4 , 5 , 3 , 5 , 3 , 4 , 4 , 3 , 4 , 3 , 3 , 4 , 4 , 
-5 , 4 , 5 , 2 , 5 , 2 , 5 , 4 , 4 , 5 , 4 , 2 , 5 , 3 , 4 , 3 , 
-5 , 4 , 3 , 3 , 2 , 3 , 5 , 4 , 4 , 5 , 3 , 5 , 4 , 3 , 4 , 5 , 
-3 , 3 , 4 , 5 , 3 , 4 , 2 , 2 , 4 , 4 , 1 , 5 , 5 , 5 , 4 , 5 , 
-2 , 4 , 3 , 2 , 2 , 4 , 4 , 5 , 4 , 4 , 4 , 5 , 1 , 4 , 3 , 3 , 
-5 , 3 , 4 , 5 , 4 , 5 , 5 , 4 , 3 , 3 , 5 , 4 , 5 , 4 , 3 , 4 , 
-5 , 3 , 4 , 5 , 5 , 5 , 4 , 4 , 4 , 4 , 5 , 2 , 5 , 5 , 3 , 3 , 
-3 , 4 , 3 , 3 , 4 , 3 , 2 , 2 , 4 , 4 , 2 , 3 , 3 , 3 , 1 , 1 , 
-4 , 5 , 4 , 4 , 3 , 4 , 4 , 3 , 1 , 2 , 2 , 4 , 5 , 4 , 5 , 5 , 
-4 , 2 , 4 , 4 , 3 , 3 , 4 , 4 , 4 , 4 , 5 , 5 , 5 , 5 , 5 , 4 , 
-2 , 4 , 4 , 3 , 4 , 2 , 4 , 4 , 3 , 1 , 1 , 2 , 5 , 1 , 5 , 2 , 
-3 , 4 , 5 , 4 , 4 , 4 , 4 , 5 , 2 , 1 , 4 , 3 , 4 , 5 , 4 , 
-5 , 5 , 5 , 4 , 2 , 5 , 4 , 3 , 3 , 4 , 3 , 3 , 
-4 , 5 , 4 , 3 , 2 , 3 , 3 , 4 , 2 , 2 , 1 , 3 , 4 , 2 , 4 , 
-4 , 4 , 1 , 4 , 3 , 3 , 4 , 4 , 4 , 2 , 2 , 4 , 5 , 5 , 5 , 
-4 , 3 , 3 , 5 , 3 , 4 , 4 , 3 , 5 , 4 , 5 , 3 , 5 , 5 , 3 , 
-3 , 4 , 5 , 5 , 3 , 5 , 3 , 4 , 3 , 5 , 4 , 3 , 4 , 4 , 3 , 
-4 , 2 , 3 , 3 , 5 , 4 , 3 , 3 , 2 , 3 , 4 , 3 , 5 , 5 , 4 , 
-5 , 3 , 4 , 4 , 5 , 3 , 2 , 4 , 5 , 3 , 4 , 3 , 1 , 4 , 4 , 
-1 , 3 , 5 , 5 , 4 , 4 , 2 , 4 , 5 , 4 , 2 , 5 , 3 , 4 , 3 , 
-2 , 3 , 5 , 2 , 4 , 3 , 2 , 5 , 4 , 4 , 4 , 3 , 3 , 5 , 3 , 
-3 , 3 , 5 , 3 , 4 , 5 , 2 , 5 , 5 , 4 , 4 , 5 , 4 , 4 , 3 , 
-5 , 4 , 3 , 5 , 3 , 4 , 4 , 2 , 3 , 3 , 5 , 3 , 3 , 3 , 3 , 
-2 , 1 , 3 , 3 , 3 , 3 , 3 , 2 , 1 , 1 , 4 , 5 , 4 , 3 , 3 , 
-3 , 3 , 2 , 1 , 2 , 2 , 4 , 5 , 5 , 4 , 5 , 4 , 3 , 4 , 4 , 
-3 , 4 , 5 , 3 , 4 , 1 , 4 , 4 , 5 , 3 , 4 , 5 , 3 , 4 , 4 , 
-3 , 4 , 3 , 3 , 1 , 3 , 1 , 4 , 4 , 5 , 2 , 5 , 2 , 2 , 3 , 
-2 , 3 , 5 , 3 , 3 , 5 , 2 , 4 , 4 , 3 , 3 , 5 , 4 ,5 , 
-4 , 5 , 4 , 2 , 4 , 4 , 4 , 2 , 3 , 3 , 2 , 4 , 5 , 4 , 3 , 
-2 , 3 , 4 , 5 , 2 , 2 , 1 , 3 , 4 , 3 , 3 , 3 , 4 , 2 , 4 , 
-3 , 3 , 2 , 4 , 4 , 2 , 2 , 4 , 4 , 5 , 5 , 5 , 3 , 4 , 5 , 
-3 , 4 , 5 , 3 , 5 , 4 , 5 , 4 , 5 , 5 , 4 , 3 , 4 , 4 , 5 , 
-4 , 5 , 3 , 5 , 3 , 5 , 4 , 3 , 5 , 4 , 3 , 5 , 3 , 3 , 3 , 
-5 , 3 , 4 , 3 , 2 , 3 , 4 , 3 , 5 , 5 , 5 , 5 , 3 , 3 , 4 , 
-5 , 4 , 3 , 4 , 4 , 3 , 4 , 3 , 1 , 3 , 4 , 1 , 3 , 5 , 5 , 
-5 , 4 , 2 , 4 , 3 , 4 , 3 , 4 , 2 , 5 , 4 , 5 , 4 , 5 , 2 , 
-4 , 2 , 3 , 5 , 4 , 3 , 4 , 4 , 4 , 4 , 4 , 4 , 4 , 3 , 3 , 
-5 , 4 , 3 , 5 , 5 , 3 , 4 , 2 , 5 , 5 , 3 , 5 , 4 , 3 , 4 , 
-3 , 4 , 4 , 2 , 3 , 3 , 4 , 3 , 4 , 4 , 3 , 3 , 2 , 4 , 3 , 
-4 , 3 , 3 , 3 , 1 , 2 , 5 , 5 , 4 , 3 , 3 , 2 , 3 , 2 , 1 , 
-2 , 3 , 3 , 5 , 5 , 4 , 5 , 3 , 5 , 5 , 4 , 4 , 4 , 5 , 2 , 
-4 , 3 , 3 , 3 , 5 , 4 , 4 , 5 , 4 , 5 , 4 , 4 , 4 , 3 , 4 , 
-2 , 4 , 2 , 3 , 3 , 5 , 2 , 3 , 2 , 3 , 4 , 4 , 4 , 3 , 4 , 
-3 , 4 , 3 , 4 , 5 , 3 , 4 , 3 , 4 , 5 , 4 , 5 , 
-4 , 3 , 4 , 4 , 4 , 3 , 4 , 3 , 2 , 3 , 5 , 3 , 4 , 1 , 2 , 
-3 , 4 , 2 , 1 , 1 , 1 , 4 , 3 , 3 , 3 , 5 , 1 , 4 , 3 , 3 , 
-3 , 2 , 3 , 2 , 2 , 4 , 5 , 5 , 5 , 4 , 2 , 5 , 5 , 5 , 4 , 
-4 , 3 , 3 , 2 , 3 , 3 , 5 , 5 , 3 , 3 , 4 , 4 , 5 , 4 , 4 , 
-5 , 4 , 3 , 5 , 4 , 3 , 3 , 4 , 4 , 4 , 2 , 3 , 3 , 5 , 2 , 
-4 , 2 , 1 , 3 , 4 , 3 , 4 , 5 , 4 , 5 , 3 , 3 , 3 , 5 , 2 , 
-3 , 3 , 5 , 4 , 3 , 3 , 1 , 4 , 5 , 2 , 3 , 5 , 4 , 5 , 3 , 
-3 , 4 , 3 , 3 , 2 , 5 , 3 , 5 , 3 , 4 , 4 , 5 , 2 , 4 , 3 , 
-3 , 5 , 2 , 3 , 4 , 4 , 3 , 3 , 4 , 4 , 3 , 2 , 3 , 5 , 5 , 
-1 , 5 , 5 , 3 , 4 , 2 , 4 , 5 , 3 , 5 , 4 , 3 , 5 , 3 , 4 , 
-4 , 2 , 4 , 3 , 4 , 3 , 3 , 4 , 2 , 2 , 2 , 4 , 3 , 3 , 3 , 
-3 , 3 , 2 , 1 , 5 , 5 , 2 , 3 , 3 , 3 , 3 , 2 , 1 , 1 , 3 , 
-3 , 4 , 5 , 3 , 4 , 4 , 2 , 5 , 3 , 4 , 4 , 3 , 2 , 4 , 1 , 
-4 , 4 , 3 , 4 , 4 , 5 , 2 , 3 , 4 , 4 , 4 , 3 , 3 , 1 , 3 , 
-1 , 3 , 4 , 5 , 2 , 4 , 2 , 3 , 3 , 5 , 4 , 4 , 4 , 2 , 4 , 
-2 , 4 , 3 , 3 , 3 , 4 , 4 ),.Dim=c(235,5),
-.Dimnames=list(paste("i",1:235, sep=""), c("TANG", "REL", 
-"CRES", "CASS", "EMPAT")))
+data(satisfaction)
 MCAvariants(satisfaction, catype = "omca")
 MCAvariants(satisfaction, catype = "mca")
 }

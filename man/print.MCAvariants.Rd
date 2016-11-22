@@ -1,21 +1,22 @@
-\name{printmcacorporateris}
-\alias{printmcacorporateris}
+\name{print.MCAvariants}
+\alias{print.MCAvariants}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Main printing function}
 \description{
-This function prints results of classical or ordered correspondence analysis. 
-It is called internally from 
-\code{MCAvariants}. 
+This function prints results of classical or ordered multiple correspondence analysis. 
 The input parameter is the name of the output of the main function  \code{MCAvariants}. 
 }
 \usage{
-printmcacorporateris(x)
+\S3method{print}{MCAvariants}(x, printdims = 2,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+\item{x}{
 The output of the main function \code{CAvariants}.}
+\item{printdims}{The number of dimensions, \code{printdims}, that are used to generate the correspondence plot 
+and for summarising the numerical output of the analysis. By default, \code{printdims  =  2}.}
+\item{...}{Further arguments passed to or from other methods.}
 }
 \details{
 This function uses another function (called \code{printwithaxes}) for specifying the number of matrix dimensions to print. 
@@ -28,7 +29,6 @@ The value of output returned depends on the kind of multiple correspondence anal
 \item{Polynomials}{Polynomial functions of each variable. 
 When \code{catype} is \code{omca}.}
 \item{Linear Percentage of Clusters }{The percentage of individuals belonging to each cluster. When \code{catype} is \code{omca}.}
-
 \item{Polynomial Components  of Total Inertia}{The decomposition of total inertia via orthogonal polynomials. When \code{catype} is \code{omca}. }
 \item{Degree of Freedom}{Degree of Freedom of Polynomial Component.  When \code{catype} is \code{omca}.}
 \item{Inertia values}{Inertia values of super-indicator and Burt table.}

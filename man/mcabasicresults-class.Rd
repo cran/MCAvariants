@@ -1,7 +1,8 @@
-\name{mcabasicresultsclass}
+\name{mcabasicresults-class}
 \Rdversion{1.1}
 \docType{class}
-\alias{mcabasicresultsclass-class}
+\alias{mcabasicresults}
+\alias{mcabasicresults-class}
 \title{Class \code{"mcabasicresultsclass"}}
 \description{
 The Class of objects common to the two variants of multiple correspondence analysis
@@ -16,7 +17,7 @@ Objects can be created by calls of the form \code{mcabasicresultsclass(...)}.
 \item{\code{CX}:}{Object of type \dQuote{matrix}. The weighted transposed super-indicator table.}
 \item{\code{Rweights}:}{Object of type \dQuote{matrix}. The weights of row space.}
 \item{\code{Cweights}:}{Object of type \dQuote{matrix}. The weights of column space.}
-\item{\code{nmod}:}{Object of type \dQuote{numeric}. The number of categories of each variables.}
+\item{\code{nmod}:}{Object of type \dQuote{vector}. The number of categories of each variables.}
 \item{\code{tmod}:}{Object of type \dQuote{numeric}. The total number of categories in the super-indicator table.}
 \item{\code{np}:}{Object of type \dQuote{numeric}. The total number of variables.}
 \item{\code{Raxes}:}{Object of type \dQuote{matrix}. The axes of row space.}
@@ -26,14 +27,14 @@ Objects can be created by calls of the form \code{mcabasicresultsclass(...)}.
 \item{\code{xo}:}{Object of type \dQuote{matrix}. The original data table.}
 \item{\code{listBpoly}:}{Object of type \dQuote{list}. The orthogonal polynomials related to each ordered variable
 when \code{catype}=\dQuote{omca}.}  
-\item{\code{LinearPercentage}:}{Object of type \dQuote{matrix}. The percentage number of the individuals in clusters when
+\item{\code{LinearPercentage}:}{Object of type \dQuote{vector}. The percentage number of the individuals in clusters when
 \code{catype}=\dQuote{omca}.}
 \item{\code{BURT}:}{Object of type \dQuote{list}. The contingency tables composing the Burt table.}
 }
 }
-\section{Extends}{
-Class \code{"\linkS4class{mcacorporaterisclass}"}, directly.
-}
+%\section{Extends}{
+%Class \code{"\linkS4class{mcacorporaterisclass}"}, directly.
+%}
 \section{Methods}{
 No methods defined with class "mcabasicresultsclass" in the signature.
 }
@@ -51,7 +52,7 @@ Rosaria Lombardo}
 %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
 %}
 \examples{
-showClass("mcabasicresultsclass")
+showClass("mcabasicresults")
 }
 \keyword{classes}
 

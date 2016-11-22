@@ -1,2 +1,14 @@
-import(methods)
+S3method("print","MCAvariants")
+S3method("plot","MCAvariants")
+import(methods,tools)
+ importFrom("grDevices", "dev.new")
+     importFrom("graphics", "abline", "arrows", "legend", "lines", "par",
+     "plot", "plot.new", "points", "text", "title")
+     importFrom("stats", "pchisq", "qchisq")
 exportPattern("^[[:alpha:]]+")
+exportClasses("mcabasicresults")
+export(
+"MCAvariants",
+"plot.MCAvariants",
+"print.MCAvariants"
+)
