@@ -1,19 +1,9 @@
-omcabasic <- function(xo,vordered=c(FALSE,FALSE,TRUE,TRUE,TRUE)){
+omcabasic <- function(xo,np , nmod , tmod , rows, idr, idc, idcv,vordered){
      xodisg <- XO <- nc <- mj1 <- mj2 <- list()
-     nr <- nrow(xo)
-     np <- ncol(xo)
-     nmod <- vector()
-     for (i in 1:np){
-          nmod[i] <- max(xo[,i])
-     }
-     tmod <- sum(nmod)
-     idr <- dimnames(xo)[[1]]
-     idc <- dimnames(xo)[[2]]
-     idcv <- dimnames(xo)[[2]]
      idc2 <- NULL
           for(i in 1:np){
                XO[[i]] <- insertval2(xo[, i], nmod[i])
-               XO[[i]] <- matrix(unlist(XO[[i]]),nr,nmod[[i]])
+               XO[[i]] <- matrix(unlist(XO[[i]]),rows,nmod[[i]])
                dimnames(XO[[i]]) <- list(idr, paste(idc[[i]], 
                     1:nmod[[i]], sep = ""))
                idc2 <- c(idc2, dimnames(XO[[i]])[2])
@@ -53,7 +43,7 @@ omcabasic <- function(xo,vordered=c(FALSE,FALSE,TRUE,TRUE,TRUE)){
      rismca <- mcafun(XO, Burt, np = np, idr = idr, idc = idc2, nmod = 
           nmod1)
      xc <- rismca$xc
-     nr <- rismca$nr
+     rows <- rismca$nr
      tot <- rismca$tot
      idc <- rismca$idc
      xo <- rismca$xo
@@ -62,7 +52,7 @@ omcabasic <- function(xo,vordered=c(FALSE,FALSE,TRUE,TRUE,TRUE)){
      autovetn <- rismca$autovetn
      autovet <- rismca$autovet
      uni1 <- rismca$Rweights
-     mu <- rismca$values#eigenvalues
+     mu <- rismca$values #eigenvalues
      Burt <- rismca$Burt
      ####################################################################
      #                                                                  # 
@@ -88,7 +78,7 @@ else {Superpoly[numr:numc, numr:numc] <-autovet[numr:numc, numr:numc]}
 numr<-numr+nmod[i]
 numc<-numc+nmod[i+1]         
 }
-     Z <- t(autovetn) %*% (xo/sqrt(nr * np)) %*% Superpoly
+     Z <- t(autovetn) %*% (xo/sqrt(rows * np)) %*% Superpoly
      tZ<-t(Z)
      Coordi <- autovetn %*% Z
      dimnames(Z) <- list(idr, NULL)
@@ -115,9 +105,9 @@ cost=cost+nmod[vordered][[i]]
 #percmean=apply(as.matrix(LinearPerc),1,mean)
 #browser()
 percmean=apply(matrix(unlist(LinearPerc), max(nmod[vordered]),length(nmod[vordered])),1,mean)
-    LinearPercentage <- round(percmean/nr * 100, digits = 1)
+    LinearPercentage <- round(percmean/rows * 100, digits = 1)
      idj2 <- solve(sqrt(dj))
- omcabasicresults <- new("mcabasicresults", RX = Z, CX = tZ, Rweights 
+ omcabasicresults <- list(RX = Z, CX = tZ, Rweights 
           = uni1, Cweights = idj2, nmod = nmod, tmod = tmod, np = np, 
           Raxes = Superpoly, Caxes = autovetn,  mu = mu, dj = dj, xo 
           = xo, listBpoly = listBpoly, LinearPercentage = 

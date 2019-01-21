@@ -13,13 +13,29 @@ compute polynomial axes, coordinates, weights of rows and columns and
 total inertia.
 }
 \usage{
-omcabasic(xo, vordered= c(FALSE, FALSE, TRUE, TRUE, TRUE))
+omcabasic(xo,np , nmod , tmod , rows, idr, idc, idcv,vordered)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{xo}{
+ \item{xo}{
 The starting table of variables in reduced code.
 }
+  \item{np}{
+The column number of the starting table (coincident with the variable number).
+}
+  \item{nmod}{
+The number of variable catgories of each variable.}
+  \item{tmod}{
+The total number of variable catgories.}
+  \item{rows}{
+The row number of the starting table (coincident with the individual number).}
+  \item{idr}{
+The row labels of the data table.}
+  \item{idc}{
+The column labels of the data table.
+}
+  \item{idcv}{
+The labels of the categories of each variable.}
 \item{vordered}{
 The flag parameter for specifying what variable  is ordered. 
 By default,  all the five variables are ordered: \code{vordered = c(FALSE,FALSE,TRUE,TRUE,TRUE)}. 

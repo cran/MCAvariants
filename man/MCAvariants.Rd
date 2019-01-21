@@ -6,18 +6,19 @@ Classic and Ordered Multiple Correspondence Analysis
 }
 \description{
 It performs Classic Multiple Correspondence analysis for nominal variables
-(setting \code{catype}="mca") and Ordered Multiple Correspondence analysis via orthogonal polynomials (setting \code{catype}="omca").
+(setting \code{catype} = "mca") and Ordered Multiple Correspondence analysis via orthogonal polynomials (setting \code{catype}="omca").
 When the categorical variables are nominal and ordinal, you can specify writing \code{FALSE} or \code{TRUE} in the input parameter \code{vordered}. 
 }
 \usage{
-MCAvariants(Xtable, catype = "mca", np = 5, vordered = c(TRUE,TRUE,TRUE,TRUE,TRUE)) 
+MCAvariants(Xtable, catype = "omca",np = 5, vordered=c(TRUE,TRUE,TRUE,TRUE,TRUE)) 
 }
 \arguments{
 \item{Xtable}{
 The two-way contingency table.
 }
 \item{catype}{
-The input parameter for specifying what variant of multiple correspondence analysis is considered.  By default,  \code{catype = "mca"}. 
+The input parameter for specifying what variant of multiple correspondence analysis is considered.  
+By default,  \code{catype = "mca"}. 
 }
 \item{np}{The input parameter for specifying the number of categorical variables. By default, \code{np = 5}.
 }
@@ -64,8 +65,8 @@ important functions are \code{print.MCAvariants} and \code{plot.MCAvariants}.
 }
 \examples{
 data(satisfaction)
-MCAvariants(satisfaction, catype = "omca")
-MCAvariants(satisfaction, catype = "mca")
+MCAvariants(satisfaction, catype = "omca",np=5,vordered=c(TRUE,TRUE,TRUE,TRUE,TRUE))
+MCAvariants(satisfaction, catype = "mca",np=5)
 }
 \keyword{multivariate}
 

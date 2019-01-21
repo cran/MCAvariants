@@ -14,7 +14,7 @@ the input parameter is \code{catype="mca"}.
 %total inertia.
 }
 \usage{
-mcabasic(xo, np = 2, nmod = c(5, 5), tmod = 10, rows = 511, idr, idc, idcv)
+mcabasic(xo, np, nmod, tmod, rows, idr, idc, idcv)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

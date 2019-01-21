@@ -9,7 +9,7 @@ It produces classical graphical displays for \code{catype = "mca"} and \code{cat
 }
 \usage{
 \S3method{plot}{MCAvariants}(x, catype = "mca", firstaxis = 1, lastaxis = 2, cex = 0.8, 
-cex.lab = 0.8, prop = 1, M=2, ell=FALSE,...)
+cex.lab = 0.8, prop = 1, M=2,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -39,10 +39,6 @@ The scaling parameter for specifying the limits of the plotting area. By default
 The number of axes \code{M} considered when portraying  the elliptical confidence regions.  \cr
 By default, it is equal to \code{M = 2}. 
 }
-\item{ell}{ The logical parameter, \code{ell} which specifies whether algebraic confidence ellipses are to be included in the plot or not.  
-Setting the input parameter to \code{ell = TRUE} will allow the user to assess the statistical significance of each category to 
-the association between the variables. The ellipses will be included when the plot is constructed using principal coordinates 
-By default, this input parameter is set to \code{ell = FALSE}.  }
 \item{...}{Further arguments passed to or from other methods.}
 }
 \details{
@@ -62,6 +58,5 @@ print.MCAvariants(ris1)
 ris2=MCAvariants(satisfaction, catype = "omca")
 plot.MCAvariants(ris2)
 print.MCAvariants(ris2)
-
 }
 \keyword{ graphical }% __ONLY ONE__ keyword per line

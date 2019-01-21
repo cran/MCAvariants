@@ -85,8 +85,8 @@ mcabasic <- function(xo, np = 2, nmod = c(5, 5), tmod = 10, rows = 511,
      values <- rispc$values
      dimnames(pc2) <- list(idc2, NULL)
      dimnames(autovet) <- list(idc2, NULL)
-       mcabasic <- new("mcabasicresults", RX = pc1, CX = pc2, Rweights = 
+       mcabasic <- list(RX = pc1, CX = pc2, Rweights = 
           uni1, Cweights = idj2, nmod = nmod, tmod = tmod, np = np, Raxes 
-          = autovet, Caxes = autovetn,  mu = sing, dj = dj, xo = xo, listBpoly =list(), LinearPercentage= numeric(), BURT  
-          = aBURT)
+          = autovet, Caxes = autovetn,  mu = sing, dj = dj, xo = xo, listBpoly =list(), 
+LinearPercentage= numeric(), BURT=aBURT)
 }

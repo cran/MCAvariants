@@ -12,11 +12,10 @@ print.MCAvariants <-
      cat("\n BURT table \n")
      print(x$BURT)
      cat("\n Rows in principal coordinates: the first 10 \n")
-     printwithaxes(data.frame(x$Rprinccoord[ 1:10,1:d], 
-     row.names=x$rowlabels[1:10]), axnames)
+     printwithaxes(data.frame(x$Rprinccoord[ 1:10,1:d],  row.names=x$rowlabels[1:10]), axnames)
      cat("\n Columns in principal coordinates \n")
-     printwithaxes(data.frame(x$Cprinccoord[ ,1:d], 
-     row.names=x$collabels), axnames)
+#browser()
+     printwithaxes(data.frame(x$Cprinccoord[ ,1:d], row.names=x$collabels), axnames)
           if (x$catype == "omca"){
           cat("\n Polynomial functions of each variable \n")
           print(x$listBpoly)
