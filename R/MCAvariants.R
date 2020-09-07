@@ -39,10 +39,11 @@ MCAvariants <- function(Xtable, catype = "omca",np = 5, vordered=c(TRUE,TRUE,TRU
     
      if(catype == "mca"){
           Fmat2 <- ((S$xo/np)/sqrt(rows))  %*% S$Raxes 
+#Fmat2<-((S$xo/np)/sqrt(rows)) %*%solve((S$dj)) %*%  S$Raxes 
                               # To reconstruct the total inertia
           Fmat<- Fmat2[,-1]   # Row principal coordinates
-          Gmat <- solve(S$dj) %*% t((S$xo/np)/sqrt(rows)) %*%  S$Caxes[,1:tmod] %*% diag(1/S$mu)
-          Gmat<-Gmat[,-1]     # Column principal coordinates
+     Gmat <- solve(S$dj) %*% t((S$xo/np)/sqrt(rows)) %*%  S$Caxes[,1:tmod] %*% diag(S$mu)
+           Gmat<-Gmat[,-1]     # Column principal coordinates
           degreef <- (1/2*((tmod - np)^2 - np*(nmod[1] - 1)^2))
           comp <- rows*(S$RX[-1,-1])^2
           comppvalue1 <- 1 - pchisq(sum(S$mu^2), degreef) 

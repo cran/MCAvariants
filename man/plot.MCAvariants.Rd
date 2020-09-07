@@ -8,8 +8,8 @@ The main plot function called from the main function \code{MCAvariants}.
 It produces classical graphical displays for \code{catype = "mca"} and \code{catype = "omca"}.\cr
 }
 \usage{
-\S3method{plot}{MCAvariants}(x, catype = "mca", firstaxis = 1, lastaxis = 2, cex = 0.8, 
-cex.lab = 0.8, prop = 1, M=2,...)
+\S3method{plot}{MCAvariants}(x, catype = "mca", firstaxis = 1, lastaxis = 2, thirdaxis = 3, cex = 0.8, 
+cex.lab = 0.8, prop = 1, plot3d = FALSE, plotind= FALSE, M=2,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -26,6 +26,9 @@ The dimension reflected along  the horizontal axis.
   \item{lastaxis}{
 The dimension reflected along the vertical axis.
 }
+\item{thirdaxis}{
+The third axis number when \code{plot3d = TRUE}. By default, \code{thirdaxis = 3}.
+}
   \item{cex}{
 The parameter that specifies the size of character labels of points in graphical displays. By default, it is equal to 1.
 }
@@ -34,6 +37,12 @@ The parameter \code{cex.lab} that specifies the size of character labels of axes
 }
   \item{prop}{
 The scaling parameter for specifying the limits of the plotting area. By default, it is equal to 1. 
+}
+\item{plot3d}{The logical parameter specifies whether a 3D plot is to be included 
+in the output or not. By default, \code{plot3d = FALSE}.
+}
+\item{plotind}{The logical parameter specifies whether a plot of individuals is to be included 
+in the output or not. By default, \code{plotind = FALSE}.
 }
 \item{M}{
 The number of axes \code{M} considered when portraying  the elliptical confidence regions.  \cr
@@ -53,10 +62,10 @@ Rosaria Lombardo and Eric J Beh}
 \examples{
 data(satisfaction)
 ris1=MCAvariants(satisfaction, catype = "mca")
-plot.MCAvariants(ris1)
-print.MCAvariants(ris1)
+plot(ris1)
+print(ris1)
 ris2=MCAvariants(satisfaction, catype = "omca")
-plot.MCAvariants(ris2)
-print.MCAvariants(ris2)
+plot(ris2)
+print(ris2)
 }
 \keyword{ graphical }% __ONLY ONE__ keyword per line
