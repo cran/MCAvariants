@@ -119,8 +119,8 @@ MCAvariants <- function(Xtable, catype = "omca",np = 5, vordered=c(TRUE,TRUE,TRU
       #    comppvalue1, degreef = degreef)
 #-----------------------------------------------------------------------------------
 
-resultMCA<-list( Xtable = S$xo, BURT=S$BURT,listBpoly=S$listBpoly,LinearPercentage=S$LinearPercentage, 
-Rweights=S$Rweights, Cweights=S$Cweights,Raxes=S$Raxes,Caxes=S$Caxes,np=np,
+resultMCA<-list( Xtable = S$xo, BURT=S$BURT,listBpoly=S$listBpoly,LinearPercentage=S$LinearPercentage,
+QuadraticPercentage=S$QuadraticPercentage,Rweights=S$Rweights, Cweights=S$Cweights,Raxes=S$Raxes,Caxes=S$Caxes,np=np,
 rows = rows, cols = cols, nmod=nmod,tmod=tmod, np=np,rowlabels = rowlabels, collabels = 
           collabels2, Rprinccoord = Fmat, Cprinccoord 
           = Gmat, inertiaXsum = inertiaXsum, 

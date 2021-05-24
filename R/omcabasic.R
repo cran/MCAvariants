@@ -89,7 +89,7 @@ percenta=matrix(0,max(nmod),tmod)
 ncluster=list()
 j=1
 for (i in 1:tmod){   
-percentage[i] <- miocount(Coordi[, i]) #percentage of linear compnents of the np variables
+percentage[i] <- miocount(Coordi[, i]) #percentage of linear components of the np variables
 #percenta[1:length(percentage[i]),i]<-c(unlist(percentage[i]))
 #ncluster[i]<-sort(unique(Coordi[,i])) #number of unique values
 j=j+1
@@ -104,12 +104,23 @@ cost=cost+nmod[vordered][[i]]
 }
 #percmean=apply(as.matrix(LinearPerc),1,mean)
 #browser()
-percmean=apply(matrix(unlist(LinearPerc), max(nmod[vordered]),length(nmod[vordered])),1,mean)
-    LinearPercentage <- round(percmean/rows * 100, digits = 1)
+nrowp=max(nmod[vordered])
+ncolp=length(nmod[vordered])-1
+#print(nrowp)
+#print(ncolp)
+#print(length(unlist(LinearPerc)))
+#print(percentage)
+perclin=matrix(unlist(LinearPerc), nrowp,ncolp)
+#print(perclin)
+#percmean=apply(perclin,1,mean)
+#print(percmean)
+#    LinearPercentage <- round(percmean/rows * 100, digits = 1)
+ LinearPercentage <- round(perclin[,1]/rows * 100, digits = 1)
+QuadraticPercentage <- round(perclin[,2]/rows * 100, digits = 1)
      idj2 <- solve(sqrt(dj))
  omcabasicresults <- list(RX = Z, CX = tZ, Rweights 
           = uni1, Cweights = idj2, nmod = nmod, tmod = tmod, np = np, 
           Raxes = Superpoly, Caxes = autovetn,  mu = mu, dj = dj, xo 
           = xo, listBpoly = listBpoly, LinearPercentage = 
-          LinearPercentage, BURT = aBURT)
+          LinearPercentage,QuadraticPercentage=QuadraticPercentage, BURT = aBURT)
 }

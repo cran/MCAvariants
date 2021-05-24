@@ -35,7 +35,7 @@ developments. Journal of Statistical Planning and Inference, 137:3126--3226.
 %}
 \examples{
 data(alligator.dat)
-dim(alligator.dat)
-dimnames(alligator.dat)
+#dim(alligator.dat)
+#dimnames(alligator.dat)
 }
 \keyword{datasets}

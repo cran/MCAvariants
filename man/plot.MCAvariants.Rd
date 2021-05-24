@@ -61,11 +61,9 @@ Beh EJ Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strat
 Rosaria Lombardo and Eric J Beh}
 \examples{
 data(satisfaction)
-ris1=MCAvariants(satisfaction, catype = "mca")
-plot(ris1)
-print(ris1)
-ris2=MCAvariants(satisfaction, catype = "omca")
-plot(ris2)
-print(ris2)
+res1=MCAvariants(satisfaction, catype = "mca", np=5)
+plot(res1)
+res2=MCAvariants(satisfaction, catype = "omca", np = 5, vordered=c(TRUE,TRUE,TRUE,TRUE,TRUE))
+plot(res2)
 }
 \keyword{ graphical }% __ONLY ONE__ keyword per line

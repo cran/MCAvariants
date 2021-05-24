@@ -22,7 +22,7 @@ The starting table of variables in reduced code.
 }
   \item{np}{
 The column number of the starting table (coincident with the variable number).
-}
+By default,\code{np=5}.}
   \item{nmod}{
 The number of variable catgories of each variable.}
   \item{tmod}{
@@ -38,7 +38,7 @@ The column labels of the data table.
 The labels of the categories of each variable.}
 \item{vordered}{
 The flag parameter for specifying what variable  is ordered. 
-By default,  all the five variables are ordered: \code{vordered = c(FALSE,FALSE,TRUE,TRUE,TRUE)}. 
+By default,  all the five variables are ordered: \code{vordered = c(TRUE,TRUE,TRUE,TRUE,TRUE)}. 
 }
 }
 %\details{

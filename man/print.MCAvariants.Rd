@@ -53,11 +53,11 @@ Rosaria Lombardo}
 %\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
-%\examples{
+\examples{
 %##---- Should be DIRECTLY executable !! ----
-%##-- ==>  Define data, use random,
-%##--	or do  help(data=index)  for the standard data sets.
-%    }
+res=MCAvariants(satisfaction, catype = "omca", np = 5, vordered=c(TRUE,TRUE,TRUE,TRUE,TRUE))
+print(res)
+   }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 %\keyword{ ~kwd1 }

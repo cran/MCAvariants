@@ -33,7 +33,7 @@ Unpublished thesis, Seconda Universit\'{a}  degli Studi di Napoli, Capua Italy.
 %}
 \examples{
 data(satisfaction)
-dim(satisfaction)
-dimnames(satisfaction)
+#dim(satisfaction)
+#dimnames(satisfaction)
 }
 \keyword{datasets}

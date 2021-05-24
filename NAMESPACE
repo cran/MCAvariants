@@ -1,7 +1,7 @@
 S3method("print","MCAvariants")
 S3method("plot","MCAvariants")
 import(methods,tools, ggplot2, ggrepel, gridExtra)
-  importFrom("stats", "pchisq", "qchisq")
+importFrom("stats", "pchisq", "qchisq")
 importFrom("ggplot2","ggplot")
 importFrom("gridExtra","grid.arrange")
 importFrom("plotly", "layout", "config")
