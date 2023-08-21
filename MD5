@@ -1,4 +1,4 @@
-e9f9959d39751799cb89eba528c28a7e *DESCRIPTION
+3069f9ecf5f54c207d6122418c52112d *DESCRIPTION
 15e7bbfdb5b2110991dda69ca58506e3 *NAMESPACE
 e7e65449d266ee7ac37cc2c878e6fcf7 *R/MCAvariants.R
 058b3e3dcc830982186370a7b2858613 *R/caplot3d.R
@@ -12,9 +12,9 @@ ea1dc0e9c7ef58b9f51f591883b4864a *R/plot.MCAvariants.R
 e8b1cf1b9dcb1714abc3bcf8b2e713b2 *R/print.MCAvariants.R
 cdf85504343d4b0d775de9fe76356a57 *R/printwithaxes.R
 23bd26bb50c6df0b9c7b21bbd1ba5e75 *R/tableconvert.R
-f090a25a1e5da05bb9feae7af634e1e9 *data/alligator.dat.rda
-26a57f3078decd8ab2472193e1808154 *data/satisfaction.rda
-3ca3dac4d9a65f3161c91e8b3bd581ff *man/MCAvariants.Rd
+da2d59f6df584a87ff68d7efe3990c1f *data/alligator.dat.rda
+bab4d33e7f49b3ff47f9fb7af436244f *data/satisfaction.rda
+45ad7b4a3a609d4199c245e49eeed61e *man/MCAvariants.Rd
 93617691aeee6eafa71ccb8d9ac8bfb1 *man/alligator.dat.Rd
 6851130cd89cf6860947ca5add5e4d0d *man/caplot3d.Rd
 c13117e88dbd37006f57de7f1ce9395a *man/insertval2.Rd

@@ -1,6 +1,7 @@
 \name{MCAvariants}
 \alias{MCAvariants}
-\docType{package}
+%\alias{MCAvariants-package}
+%\docType{package}
 \title{
 Classic and Ordered Multiple Correspondence Analysis
 }
